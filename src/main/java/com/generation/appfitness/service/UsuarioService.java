@@ -1,5 +1,7 @@
 package com.generation.appfitness.service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,6 +96,43 @@ public class UsuarioService {
 
     private String gerarToken(String usuario) {
         return "Bearer " + jwtService.generateToken(usuario);
+    }
+
+    public Optional<Map<String, Object>> calcularIMC(Long id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+
+            if (usuario.getPeso() > 0 && usuario.getAltura() > 0) {
+                double imc = usuario.getPeso() / (usuario.getAltura() * usuario.getAltura());
+
+                String classificacao;
+
+                if (imc < 18.5) {
+                    classificacao = "Abaixo do peso";
+                } else if (imc < 25) {
+                    classificacao = "Peso normal";
+                } else if (imc < 30) {
+                    classificacao = "Sobrepeso";
+                } else if (imc < 35) {
+                    classificacao = "Obesidade grau 1";
+                } else if (imc < 40) {
+                    classificacao = "Obesidade grau 2";
+                } else {
+                    classificacao = "Obesidade grau 3";
+                }
+
+                Map<String, Object> resposta = new HashMap<>();
+                resposta.put("usuario", usuario.getNome());
+                resposta.put("imc", String.format("%.2f", imc));
+                resposta.put("classificacao", classificacao);
+
+                return Optional.of(resposta);
+            }
+        }
+
+        return Optional.empty();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.generation.appfitness.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -75,45 +74,11 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/imc/{id}")
-	public ResponseEntity<Object> calcularIMC(@PathVariable Long id) {
-		Optional<Usuario> usuario = usuarioRepository.findById(id);
-		System.out.println(usuario.get().getPeso() <= 0 || usuario.get().getAltura() <= 0);
-
-		if (usuario.isPresent()) {
-			if (usuario.get().getPeso() > 0 || usuario.get().getAltura() > 0) {
-
-				double imc = usuario.get().getPeso() / (usuario.get().getAltura() * usuario.get().getAltura());
-
-				String classificacao;
-
-				if (imc < 18.5) {
-					classificacao = "Abaixo do peso";
-				} else if (imc < 25) {
-					classificacao = "Peso normal";
-				} else if (imc < 30) {
-					classificacao = "Sobrepeso";
-				} else if (imc < 35) {
-					classificacao = "Obesidade grau 1";
-				} else if (imc < 40) {
-					classificacao = "Obesidade grau 2";
-				} else {
-					classificacao = "Obesidade grau 3";
-				}
-
-				Map<String, Object> resposta = new HashMap<>();
-				resposta.put("usuario: ", usuario.get().getNome());
-				resposta.put("imc: ", String.format("%.2f", imc));
-				resposta.put("classificacao: ", classificacao);
-
-				return ResponseEntity.ok(resposta);
-
-			} else {
-
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-			}
-		}
-
-		return ResponseEntity.notFound().build();
+	public ResponseEntity<Map<String, Object>> calcularIMC(@PathVariable Long id) {
+		return usuarioService.calcularIMC(id)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body(Map.of("mensagem", "Usuário não encontrado ou dados inválidos.")));
 	}
 
 }
