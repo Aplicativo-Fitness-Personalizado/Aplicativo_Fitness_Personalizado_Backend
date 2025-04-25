@@ -5,22 +5,22 @@ Projeto desenvolvido como parte do **Desafio 2 do Projeto Integrador (Backend)**
 <p align="center">
  <a href="#descrição-do-projeto">Descrição</a> •
  <a href="#problema-que-o-projeto-visa-resolver">Problema</a> •
- <a href="#entidade-e-atributos">Entidades</a> •
+ <a href="#entidades-e-atributos">Entidades</a> •
  <a href="#funcionalidades-do-crud">Funcionalidades</a> •
  <a href="#tecnologias-utilizadas">Tecnologias</a> • 
- <a href="#teste">Testes</a> •
+ <a href="#testes">Testes</a> •
  <a href="#integrantes-do-grupo">Integrantes</a>
 </p>
 
-## 📖 Descrição do Projeto
+## Descrição do Projeto
 
 A aplicação de Fitness se trata de um sistema de cadastro e autenticação de usuários voltado para o acompanhamento da saúde física e controle de treinos personalizados. O sistema permite calcular o IMC (Índice de Massa Corporal) dos usuários, além de oferecer funcionalidades CRUD completas.
 
-## ❗ Problema que o projeto visa resolver
+## Problema que o projeto visa resolver
 
 Muitas pessoas iniciam suas rotinas de treino sem um controle real de sua saúde corporal. O projeto busca resolver a falta de organização e personalização no acompanhamento fitness, possibilitando que usuários cadastrem seus dados, acessem informações de saúde (como o IMC) e mantenham um histórico organizado para seu progresso.
 
-## 🗃️ Entidades e Atributos
+## Entidades e Atributos
 
 ### Banco de dados (`db_appacademia`)
 
@@ -49,10 +49,11 @@ Muitas pessoas iniciam suas rotinas de treino sem um controle real de sua saúde
 - `descricao` — Descrição da região corporal
 - `nome` — Nome da região corporal (ex: Peitoral, Pernas)
 
-📌 Relacionamentos
-Cada Usuário (tb_usuario) pode ter múltiplos Treinos (tb_treino).
+### 📌 Relacionamentos
+- Cada Usuário (tb_usuario) pode ter múltiplos Treinos (tb_treino).
+- Cada Treino pertence a uma única Região Corporal (tb_regiao_corporal).
+![image](https://github.com/user-attachments/assets/bec4ddfc-fbaf-4bcf-8a8c-9adf295f6cba)
 
-Cada Treino pertence a uma única Região Corporal (tb_regiao_corporal).
 
 ## Funcionalidades do CRUD
 
@@ -78,7 +79,7 @@ Cada Treino pertence a uma única Região Corporal (tb_regiao_corporal).
 - Atualizar: Altera as informações de uma região corporal
 - Excluir: Deletar uma região corporal especifica
 
-## 💻 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Tecnologia    | Descrição                                          |
 | ------------- | -------------------------------------------------- |
@@ -90,11 +91,11 @@ Cada Treino pertence a uma única Região Corporal (tb_regiao_corporal).
 | Insomnia      | Testes de endpoints RESTful                        |
 | Trello        | Organização e gerenciamento das tarefas do projeto |
 
-## 🧪 Testes
+## Testes
 
 As funcionalidades da API foram testadas utilizando o Insomnia, simulando requisições HTTP para validação de cada endpoint.
 
-## 👨‍💻 Integrantes do Grupo
+## Integrantes do Grupo
 
 | Responsavel      | Função        | GitHub                                                      |
 | ---------------- | ------------- | ----------------------------------------------------------- |
@@ -111,3 +112,6 @@ As funcionalidades da API foram testadas utilizando o Insomnia, simulando requis
 
 📌 Observações
 Este projeto é voltado para fins educacionais e representa uma solução inicial que pode ser expandida com autenticação, agendamentos, relatórios e integração com frontend no futuro.
+
+---
+Feito com muito carinho Grupo Javason's Five 💖
