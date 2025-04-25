@@ -2,6 +2,7 @@ package com.generation.appfitness.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -15,6 +16,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -36,11 +38,15 @@ public class Usuario {
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull(message = "O Atributo Altura é Obrigatório!")
-	private Float altura;
+	@Positive(message = "O parâmetro altura deve ser maior do que zero!")
+	private Double altura;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull(message = "O Atributo Peso é Obrigatório!")
-	private Float peso;
+	@Positive(message = "O Peso deve ser maior do que zero!")
+	private Double peso;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
@@ -78,19 +84,19 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Float getAltura() {
+	public Double getAltura() {
 		return altura;
 	}
 
-	public void setAltura(Float altura) {
+	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
 
-	public Float getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Float peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 
