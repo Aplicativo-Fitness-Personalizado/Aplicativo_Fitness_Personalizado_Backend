@@ -41,7 +41,12 @@ public class RegiaoCorporalController {
 		return regiaoCorporalRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-
+	
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<RegiaoCorporal>> getByTitle(@PathVariable String descricao) {
+		return ResponseEntity.ok(regiaoCorporalRepository.findAllByDescricaoContainingIgnoreCase(descricao));
+	}
+		
 	@PostMapping
 	public ResponseEntity<RegiaoCorporal> post(@Valid @RequestBody RegiaoCorporal regiaoCorporal) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(regiaoCorporalRepository.save(regiaoCorporal));
