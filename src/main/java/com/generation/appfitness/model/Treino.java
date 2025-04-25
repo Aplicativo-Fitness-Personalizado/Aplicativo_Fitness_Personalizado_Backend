@@ -1,9 +1,12 @@
 package com.generation.appfitness.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -30,6 +33,33 @@ public class Treino {
 	@NotBlank(message = "O atributo Tempo de Descanso é Obrigatório!") 
 	@Size(min = 3, max = 100, message = "O atributo Tempo de Descanso deve conter no mínimo 03 e no máximo 100 caracteres")
 	private String tempoDescanso;
+	
+	
+	@ManyToOne
+	@JsonIgnoreProperties("treino")
+	private RegiaoCorporal regiaoCorporal;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("treino")
+	private Usuario usuario;
+	
+	
+	
+	public RegiaoCorporal getRegiaoCorporal() {
+		return regiaoCorporal;
+	}
+
+	public void setRegiaoCorporal(RegiaoCorporal regiaoCorporal) {
+		this.regiaoCorporal = regiaoCorporal;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return id;
