@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,7 +28,7 @@ public class Treino {
 	@Size(min = 3, max = 1000, message = "O atributo descrição deve conter no mínimo 05 e no máximo 1000 caracteres")
 	private String descricao;
 	
-	@NotBlank(message = "O atributo repetições é obrigatório!")
+	@NotNull(message = "O atributo repetições é obrigatório!")
 	private Integer repeticao;
 	
 	@NotBlank(message = "O atributo Tempo de Descanso é Obrigatório!") 
