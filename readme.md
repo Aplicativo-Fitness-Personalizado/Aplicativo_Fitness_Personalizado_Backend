@@ -12,7 +12,7 @@ Projeto desenvolvido como parte do **Desafio 2 do Projeto Integrador (Backend)**
  <a href="#integrantes-do-grupo">Integrantes</a>
 </p>
 
-<p> **Escopo do Projeto:** Clique [aqui](https://docs.google.com/document/d/1Wq22gH4X3bF0IVLknE9w6sFajIIRUa_g4EbEk0LAitQ/edit?tab=t.0) ! </p>
+**Escopo do Projeto:** Clique [aqui](https://docs.google.com/document/d/1Wq22gH4X3bF0IVLknE9w6sFajIIRUa_g4EbEk0LAitQ/edit?tab=t.0) ! 
 
 ## Descrição do Projeto
 
