@@ -12,6 +12,8 @@ Projeto desenvolvido como parte do **Desafio 2 do Projeto Integrador (Backend)**
  <a href="#integrantes-do-grupo">Integrantes</a>
 </p>
 
+<p> **Escopo do Projeto:** Clique [aqui](https://docs.google.com/document/d/1Wq22gH4X3bF0IVLknE9w6sFajIIRUa_g4EbEk0LAitQ/edit?tab=t.0) ! </p>
+
 ## Descrição do Projeto
 
 A aplicação de Fitness se trata de um sistema de cadastro e autenticação de usuários voltado para o acompanhamento da saúde física e controle de treinos personalizados. O sistema permite calcular o IMC (Índice de Massa Corporal) dos usuários, além de oferecer funcionalidades CRUD completas.
